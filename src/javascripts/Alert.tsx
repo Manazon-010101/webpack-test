@@ -1,15 +1,23 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-// Reactのコンポーネントが message と言うプロパティを受け取って
-// そしてそのメッセージは文字列(string)であることを示している
+// 今までの通常のstylesheetはブラウザ全体に影響を及ぼすが、
+// 一方でここで定義した(↓)styleはこのAleatにしか影響を及ぼさない
+// なので一切他のコンポーネントに影響を及ぼさないので
+// 大規模開発において管理がしやすくなる。
+const AlertContainer = styled.div`
+  background-color: green;
+  color: #fff;
+  padding: 1em;
+`;
+
+
 const Aleat: React.FC<{ message: string }> = ({ message }) => {
   return (
-    <div style={{ backgroundColor: 'green', color: '#fff', padding: '1em' }}>
+    <AlertContainer>
       {message}
-    </div>
+    </AlertContainer>
   );
 };
 
 export default Aleat;
-
-// このようにTSを使うと型の定義をJSに組み込むことができる。
